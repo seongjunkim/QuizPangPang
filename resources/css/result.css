@@ -1,0 +1,46 @@
+@charset "UTF-8";
+@font-face { font-family: 'BMHANNAPro'; src: url(/resources/font/BMHANNAPro.ttf) format('truetype'); }
+@font-face { font-family: 'CookieRun'; src: url(/resources/font/CookieRun.ttf) format('truetype'); }
+html, body { width: 100%; height: 100%; margin: 0; padding: 0; outline: none; user-select: none; }
+img { width: 100%; height: 100%; }
+#background { 
+	position: absolute; left: 2.5%; top: 2.5%; width: 95%; height: 95%;
+	background-size: 100% 100%; background-repeat: no-repeat; 
+}
+.pass_msg { position: absolute; width: 60%; height: 40%; left: 22%; top: 10%; }
+.gift_box { position: absolute; width: 60%; height: 25%; left: 22%; bottom: 22%; }
+.gift { position: absolute; width: 7%; height: 18%; -webkit-tap-highlight-color: transparent; }
+.gift:active { transform: translateY(5%); filter: brightness(90%); }
+.window { position: absolute; width: 70%; height: 85%; left: 17%; top: 9%; z-index: 100; }
+.gift_img { position: absolute; width: 16%; height: 20%; left: 42%; top: 22%; z-index: 100; }
+.window_msg { 
+	position: absolute; left: 25%; top: 41%; z-index: 100; color: 423832;
+	display: table; width: 51%; height: 18%; text-align: center;
+}
+.window_msg p { display: table-cell; vertical-align: middle; font-family: 'CookieRun'; font-size: 3.5vw; }
+.send { 
+	position: absolute; width: 14%; height: 13%; left: 43.5%; top: 61%; z-index: 100; 
+	cursor: pointer; -webkit-tap-highlight-color: transparent; 
+}
+.send:active { transform: translateY(3%); filter: brightness(90%); }
+.fail_msg { position: absolute; width: 70%; height: 55%; left: 17%; top: 8%; }
+.retry_msg { position: absolute; width: 70%; height: 55%; left: 17%; top: 8%; }
+.fail_img { position: absolute; width: 18%; height: 32%; right: 17%; bottom: 25%; }
+.move_count { 
+	font-family: 'BMHANNAPro'; font-size: 1.5vw; color: #604943; position: absolute; 
+	display: inline-block; left: 40%; bottom: 17%;
+}
+.move_msg { 
+	font-family: 'BMHANNAPro'; font-size: 1.5vw; color: #604943; position: absolute; 
+	display: inline-block; left: 41.5%; bottom: 17%;
+}
+.retry { 
+	position: absolute; width: 22%; height: 22%; right: 38%; bottom: 27%; display: inline-block; 
+	z-index: 99; border: 0; outline: 0; background-color: unset; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.retry:active { transform: translateY(3%); filter: brightness(90%); }
+.main { 
+	position: absolute; width: 22%; height: 22%; right: 38%; bottom: 27%; display: inline-block; 
+	z-index: 99; border: 0; outline: 0; background-color: unset; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.main:active { transform: translateY(3%); filter: brightness(90%); }

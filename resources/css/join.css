@@ -1,0 +1,47 @@
+@charset "UTF-8";
+@font-face { font-family: 'BMHANNAPro'; src: url(/resources/font/BMHANNAPro.ttf) format('truetype'); }
+@font-face { font-family: 'HelveticaNeue'; src: url(/resources/font/HelveticaNeue.ttf) format('truetype'); }
+@font-face { font-family: 'CookieRun'; src: url(/resources/font/CookieRun.ttf) format('truetype'); }
+html, body { width: 100%; height: 100%; margin: 0; padding: 0; outline: none; user-select: none; }
+img { width: 100%; height: 100%; }
+#background { 
+	position: absolute; left: 2.5%; top: 2.5%; width: 95%; height: 95%;
+	background-image: url("/resources/img/join_bg.png"); background-size: 100% 100%; background-repeat: no-repeat; 
+}
+.content { position: absolute; width: 60%; height: 45%; left: 20%; bottom: 30%; display: inline-block; }
+.go { 
+	position: absolute; width: 11%; height: 18%; right: 9%; bottom: 13%; display: inline-block;
+	border: 0; outline: 0; background-color: unset; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.go:active { transform: translateY(3%); filter: brightness(90%); }
+.back { position: absolute; width: 10%; height: 18%; left: 11%; bottom: 13%; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.back:active { transform: translateY(3%); filter: brightness(90%); }
+.textpad {
+	position: absolute; border: none; left: 39%; bottom: 32%; width: 36%; height: 14%; z-index: 80;
+	font-family: "BMHANNAPro"; font-size: 4.6vw; outline: none; color: transparent; text-shadow: 0 0 0 black;
+}
+#numericInput { user-select: none; -webkit-user-select: none; }
+.keypad {
+	position: absolute; width: 21%; height: 55%; top: 38%; right: 65%; background: white; margin: 0; padding: 0; 
+	border-radius: 10%; display: none; z-index: 80; padding: 2%; border: 1px solid #aaa; opacity: 0.96; 
+}
+.key { 
+    float: left; font-size: 2.2vw; width: 27%; height: 21%; margin: 3%; color: black; cursor: pointer; 
+    font-family: "HelveticaNeue"; background: #eee; border-radius: 50%; align-items: center; align-content: center; 
+    outline: none; font-weight: bold; border: none; -webkit-tap-highlight-color: transparent;
+}
+.key:hover { background-color: #eee; }
+.key:active { transform: translateY(3%); filter: brightness(90%); }
+#delete { font-size: 1.6vw; }
+#close { font-size: 1.6vw; }
+.window { position: absolute; width: 70%; height: 85%; left: 17%; top: 9%; z-index: 100; }
+.window_msg { 
+	position: absolute; left: 25%; top: 41%; z-index: 100;
+	display: table; width: 51%; height: 18%; text-align: center;
+}
+.window_msg p { display: table-cell; vertical-align: middle; font-family: 'CookieRun'; font-size: 3.5vw; }
+.close { 
+	position: absolute; width: 14%; height: 13%; left: 43.5%; top: 61%; z-index: 100; 
+	cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.close:active { transform: translateY(3%); filter: brightness(90%); }
