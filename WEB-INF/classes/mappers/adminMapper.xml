@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.QuizPangPang.mappers.adminMapper">
+   
+   <select id="login" resultType="com.QuizPangPang.domain.AdminVO">
+	select *
+	from tbl_admin 
+	where id = #{id} and pw = #{pw}
+   </select>
+   
+   <select id="questionList" resultType="com.QuizPangPang.domain.QuestionVO">
+	select *
+	from tbl_question
+   </select>
+   
+   <insert id="questionRegister">
+	insert into tbl_question (question, answer, explanation) 
+	values (#{question}, #{answer}, #{explanation})
+   </insert>
+   
+   <update id="questionModify">
+	update tbl_question
+	set question = #{question}, answer = #{answer}, explanation = #{explanation}
+	where num = #{num}
+   </update>
+   
+   <delete id="questionDelete">
+	delete
+	from tbl_question
+	where num = #{num}
+	</delete>
+   
+   <select id="backgroundList" resultType="com.QuizPangPang.domain.BackgroundVO">
+	select *
+	from tbl_background
+   </select>
+   
+   <insert id="backgroundRegister">
+	insert into tbl_background (background)
+	values (#{background})
+   </insert>
+   
+   <select id="backgroundInfo" resultType="com.QuizPangPang.domain.BackgroundVO">
+	select *
+	from tbl_background
+	where num = #{num}
+   </select>
+   
+   <update id="backgroundModify">
+	update tbl_background 
+	set background = #{background} 
+	where num = #{num}
+	</update>
+   
+    <delete id="backgroundDelete">
+	delete
+	from tbl_background
+	where num = #{num}
+	</delete>
+   
+    <select id="resultList" resultType="com.QuizPangPang.domain.ResultVO">
+	select *
+	from tbl_result
+    </select>
+   
+    <select id="rewardCount">
+	select count(if(reward=0,reward,null))
+	from tbl_result
+    </select>
+   
+    <update id="resultUpdate">
+	update tbl_result 
+	set reward = 0 
+	where num = #{num}
+	</update>
+	
+	<select id="giftList" resultType="com.QuizPangPang.domain.GiftVO">
+	select *
+	from tbl_gift
+   	</select>
+    
+    <update id="giftModify">
+	update tbl_gift
+	set gift = #{gift}
+	where num = #{num}
+   	</update>
+   
+   <select id="chartArea" resultType="com.QuizPangPang.domain.ResultVO">
+   select sub1.dates, count(tbl_result.num) as count
+   from
+   (
+   	select date_format(date_sub(now(), interval units.i + tens.i * 10 + hundreds.i * 100 day), "%Y-%m-%d") as dates 
+   	FROM (select 0 i union select 1 union select 2 union select 3 union select 4 union select 5 union select 6 union select 7 union select 8 union select 9)units
+   	cross join (select 0 i union select 1 union select 2 union select 3 union select 4 union select 5 union select 6 union select 7 union select 8 union select 9)tens
+   	cross join (select 0 i union select 1 union select 2 union select 3 union select 4 union select 5 union select 6 union select 7 union select 8 union select 9)hundreds
+   	where date_sub(now(), interval units.i + tens.i * 27 + hundreds.i * 100 day) between date_sub(now(), interval 1 month) and now()
+   ) sub1
+   left outer join tbl_result
+   on sub1.dates = date_format(tbl_result.date, "%Y-%m-%d")
+   group by sub1.dates
+   </select>
+   
+  <select id="chartBar" resultType="com.QuizPangPang.domain.ResultVO">
+  select sub1.dates, count(if(tbl_result.reward=0,tbl_result.reward,null)) as count
+  from
+  (
+   select date_format(date_sub(now(), interval units.i + tens.i * 10 + hundreds.i * 100 day), "%Y-%m-%d") as dates
+   FROM (select 0 i union select 1 union select 2 union select 3 union select 4 union select 5 union select 6 union select 7 union select 8 union select 9)units
+   cross join (select 0 i union select 1 union select 2 union select 3 union select 4 union select 5 union select 6 union select 7 union select 8 union select 9)tens
+   cross join (select 0 i union select 1 union select 2 union select 3 union select 4 union select 5 union select 6 union select 7 union select 8 union select 9)hundreds
+   where date_sub(now(), interval units.i + tens.i * 34 + hundreds.i * 100 day) between date_sub(now(), interval 1 month) and now()
+  ) sub1
+  left outer join tbl_result
+  on sub1.dates = date_format(tbl_result.date, "%Y-%m-%d")
+  group by sub1.dates
+ </select>
+   
+  <select id="chartPie" resultType="com.QuizPangPang.domain.ResultVO">
+  select reward
+  from tbl_result
+  where date between date_add(now(),interval -1 month) and now();
+  </select>
+  
+</mapper>
